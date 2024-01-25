@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zeleynik herbs software</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="full-container">
+    <div class="table-container">
+      <div class="nav-container">
+        <div class="span-container">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="tableValues-container">
+        <div class="operationsContainer">
+          <input type="text" id="search" placeholder="Search Values">
+          <button id="addTable"><span>Create row</span></button>
+        </div>
+        <table>
+          <tr>
+            <th>Болка / Болест</th>
+            <th>Билки</th>
+            <th>Functions</th>
+          </tr>
+          <tr>
+            <td>Болки в очите и намалено зрение</td>
+            <td>Исоп / Маточина / Босилеков извлек в Розова вода (на капки) / Босилек + Ябълка</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Болки в гърлото</td>
+            <td>Самобайка / Маточина / Риган / Босилек</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Главоболие</td>
+            <td>Богородиче (трева) / Пълзящо срещниче / Ранилист (Чистец) / Маточина / Дълголистна мента</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Грип</td>
+            <td>Риган / Босилек + Трендафил / Градински чай / Чубрица / Байкалски шлемник (превара)</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Зъбобол</td>
+            <td>Скално миризливче - Стресниче / Пълзящо срещниче (горещник) / Маточина / Дълголистна мента / Блатна мента / Риган / Босилек / Чубрица</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Кашлица</td>
+            <td>Горско миризливче със Слез / Ранилист (Чистец) / Самобайка / Пчелник / Риган / Босилек / Градински чай / Чубрица</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Алергии</td>
+            <td>Дълголистна мента / Байкалски шлемник (превара)</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Болка в стомаха и корема</td>
+            <td>Черно кандилниче / Ранилист (Чистец) / Лавандула / Кошутина / Маточина / Водна мента / Полска мента / Дълголистна мента / Блатна мента / Коча билка / Риган / Босилек / Пришница / Градински чай / Мускатна какула / Чубрица / Байкалски шлемник (превара)</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Астма (бронхиална)</td>
+            <td>Ранилист (Чистец) / Черновръх (Котешка стъпка) / Блатна мента / Босилек / Байкалски шлемник (превара)</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Безсъние</td>
+            <td>Лавандула / Дяволска уста / Маточина / Дълголистна мента / Риган / Босилек</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Задух</td>
+            <td>Самобайка / Исоп + Ружа и Слез / Маточина / Босилек + Праз + Ветрогон / Градински чай / Мускатна какула</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Бъбречно заболяване</td>
+            <td>Пъстро миризливче / Ранилист (Чистец) / Самобайка / Градински чай / Чубрица</td>
+            <td class="third-td-row"> <div class="button-container"><button>Route</button><button>Delete</button> <button>Edit</button>
+              </div>
+            </td>
+          </tr>
+          </table>
+          <div id="pagination"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="inputInfo-container">
+          <label id="usernameLabel">Username:</label>
+          <input type="text" id="username">
+          <label id="passwordLabel">Password:</label>
+          <input type="password" id="password">
+          <button id="create-row-button">Create row</button>
+        </div>
+        <span class="close">&times;</span>
+      </div>
+      
+      <!-- Pagination and Create New Row code -->
+      <script src="app.js"></script>
+    </body>
+    
+    </html>
