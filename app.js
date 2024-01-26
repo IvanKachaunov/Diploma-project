@@ -1,7 +1,7 @@
 let createRowButton = document.querySelector("#addTable");
-let modal = document.getElementById("myModal");
+let modal = document.getElementById("createRowModal");
 let modalInfoContainer = document.querySelector(".inputInfo-container");
-let span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close-createRowModal")[0];
 let createRowButtonModal = document.querySelector("#create-row-button");
 let usernameModal = document.querySelector("#username");
 let passwordModal = document.querySelector("#password");
@@ -18,7 +18,58 @@ let pageButton = "";
 
 let pagination = document.getElementById('pagination');
 let currentPage = 1;
-const rowsPerPage = 7;
+const rowsPerPage = 8;
+
+// Start of Search values logic
+
+document.getElementById('search').addEventListener('input', function(e) {
+    searchTable(e.target.value);
+});
+
+function searchTable(query) {
+    let trs = table.querySelectorAll('tr:not(:first-child)');
+    trs.forEach(tr => {
+        if (tr.textContent.toLowerCase().includes(query.toLowerCase())) {
+            tr.classList.remove('search-hidden');
+        } else {
+            tr.classList.add('search-hidden');
+        }
+    });
+    updatePaginationBasedOnSearch();
+}
+
+function updatePaginationBasedOnSearch() {
+    let visibleRows = Array.from(table.querySelectorAll('tr:not(.search-hidden)')).length - 1;
+    let pageCount = Math.ceil(visibleRows / rowsPerPage);
+    setupPagination(pageCount);
+    updateTableDisplay();
+}
+
+function setupPagination(pageCount) {
+    pagination.innerHTML = '';
+    for (let i = 1; i <= pageCount; i++) {
+        let pageButton = document.createElement('button');
+        pageButton.innerText = i;
+        pageButton.addEventListener('click', () => {
+            if (currentPage !== i) {
+                currentPage = i;
+                updateActiveButton(i);
+                updateTableDisplay();
+            }
+        });
+        pagination.appendChild(pageButton);
+    }
+    updateActiveButton(currentPage);
+}
+
+function updateActiveButton(activePage) {
+    document.querySelectorAll('#pagination button').forEach(btn => {
+        btn.classList.remove('Active');
+    });
+    if (activePage && pagination.children[activePage - 1]) {
+        pagination.children[activePage - 1].classList.add('Active');
+    }
+}
 
 function setupPagination() {
     pagination.innerHTML = '';
@@ -59,10 +110,16 @@ function updateTableDisplay() {
     let trs = table.querySelectorAll('tr:not(:first-child)');
     let startIndex = (currentPage - 1) * rowsPerPage;
     let endIndex = startIndex + rowsPerPage;
+    let visibleIndex = 0;
 
-    trs.forEach((tr, index) => {
-        if (index >= startIndex && index < endIndex) {
-            tr.style.display = '';
+    trs.forEach((tr) => {
+        if (!tr.classList.contains('search-hidden')) {
+            if (visibleIndex >= startIndex && visibleIndex < endIndex) {
+                tr.style.display = '';
+            } else {
+                tr.style.display = 'none';
+            }
+            visibleIndex++;
         } else {
             tr.style.display = 'none';
         }
@@ -80,12 +137,6 @@ span.onclick = function() {
     resetModalForm();
 };
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        resetModalForm();
-    }
-};
-
 createRowButtonModal.addEventListener("click", () => {
     if (usernameModal.value != "admin" || passwordModal.value != "admin") {
         alert("No valid information, can't proceed!");
@@ -100,13 +151,13 @@ createRowButtonModal.addEventListener("click", () => {
 
         // Create form fields for adding a row
         createLabelPainElement = document.createElement("label");
-        createLabelPainElement.textContent = "Болка / Болест: ";
+        createLabelPainElement.textContent = " Болка / Болест: ";
         createInputPainElement = document.createElement("input");
         modalInfoContainer.appendChild(createLabelPainElement);
         modalInfoContainer.appendChild(createInputPainElement);
 
         createLabelSecondElement = document.createElement("label");
-        createLabelSecondElement.textContent = "Билки: ";
+        createLabelSecondElement.textContent = " Билки: ";
         createInputSecondElement = document.createElement("input");
         modalInfoContainer.appendChild(createLabelSecondElement);
         modalInfoContainer.appendChild(createInputSecondElement);

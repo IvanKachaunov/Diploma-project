@@ -121,9 +121,8 @@
     </div>
     
     <!-- The Modal -->
-    <div id="myModal" class="modal">
-      
-      <!-- Modal content -->
+    <div id="createRowModal" class="modal"> 
+      <!-- Modal content for creating new row -->
       <div class="modal-content">
         <div class="inputInfo-container">
           <label id="usernameLabel">Username:</label>
@@ -132,11 +131,39 @@
           <input type="password" id="password">
           <button id="create-row-button">Create row</button>
         </div>
-        <span class="close">&times;</span>
+        <span class="close-createRowModal">&times;</span>
       </div>
+    </div>
+
+  <div id="deleteRowModal">
+    <div class="modal-content-delete">
+      <div class="inputInfo-container-delete">
+        <label id="usernameLabel-delete">Username:</label>
+        <input type="text" id="username-delete">
+        <label id="passwordLabel-delete">Password:</label>
+        <input type="password" id="password-delete">
+        <button id="delete-row-button">Delete row</button>
+      </div>
+      <span class="close-deleteModal">&times;</span>
+    </div>
+  </div>
+
+<div id="editRowModal">
+  <div class="modal-content-edit">
+    <div class="inputInfo-container-edit">
+      <label id="usernameLabel-edit">Username:</label>
+      <input type="text" id="username-edit">
+      <label id="passwordLabel-edit">Password:</label>
+      <input type="password" id="password-edit">
+      <button id="edit-row-button">Edit row</button>
+    </div>
+    <span class="close-editModal">&times;</span>
+  </div>
+</div>
       
       <!-- Pagination and Create New Row code -->
       <script src="app.js"></script>
+      <script src="app-2.js"></script>
     </body>
     
     </html>
