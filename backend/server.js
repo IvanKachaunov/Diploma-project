@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql');
-const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3000;
@@ -52,10 +51,6 @@ app.post('/add-row', (req, res) => {
         }
     });
 });
-
-
-
-// ... other routes and middleware ...
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

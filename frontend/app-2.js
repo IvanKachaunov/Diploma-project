@@ -92,7 +92,6 @@ editRowButton.addEventListener("click", () => {
         // Reset form and hide modal
         usernameModalEdit.value = "";
         passwordModalEdit.value = "";
-        // editRowModal.style.display = "none";
     }
 });
 
