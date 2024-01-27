@@ -3,7 +3,7 @@
 - Be able to search values in the input html element (done)
 - Be able to use the "delete" option for certain selected row, with login permission (done)
 - Be able to use the "edit" option for certain selected row, with login permission (done)
-- Add database that stores data from created new rows from the "Create Row" option
+- Add database that stores data from created new rows from the "Create Row" option (done)
 - Add a feature which lets you track a certain "herb"
 
 bonus if I have time:
