@@ -15,6 +15,8 @@ let createInputSecondElement = "";
 let createInputPainElement = "";
 let createNewButtonModal = "";
 let pageButton = "";
+let herbName = "";
+let painDescription = "";
 
 let pagination = document.getElementById('pagination');
 let currentPage = 1;
@@ -153,28 +155,57 @@ createRowButtonModal.addEventListener("click", () => {
         createLabelPainElement = document.createElement("label");
         createLabelPainElement.textContent = " Болка / Болест: ";
         createInputPainElement = document.createElement("input");
+        createInputPainElement.setAttribute("id", "pain_description");
         modalInfoContainer.appendChild(createLabelPainElement);
         modalInfoContainer.appendChild(createInputPainElement);
 
         createLabelSecondElement = document.createElement("label");
         createLabelSecondElement.textContent = " Билки: ";
         createInputSecondElement = document.createElement("input");
+        createInputSecondElement.setAttribute("id", "herb_name");
         modalInfoContainer.appendChild(createLabelSecondElement);
         modalInfoContainer.appendChild(createInputSecondElement);
 
         createNewButtonModal = document.createElement("button");
+        createNewButtonModal.setAttribute("id", "rowForm");
+        createNewButtonModal.setAttribute("type", "submit");
         createNewButtonModal.textContent = "Add New Row";
         modalInfoContainer.appendChild(createNewButtonModal);
+        
 
         createNewButtonModal.addEventListener("click", () => {
         if(createInputPainElement.value == "" || createInputSecondElement.value == ""){
             alert("No valid information, can't proceed!");
         } else{
+            herbName = document.getElementById('herb_name').value;
+            painDescription = document.getElementById('pain_description').value;
             addNewRow();
             setupPagination();
             updateTableDisplay();
             resetModalForm();
+            
         }
+        
+            console.log(herbName);
+        
+            console.log(painDescription);
+        
+            fetch('/add-row', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ herb_name: herbName, pain_description: painDescription }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                // Additional code to update the UI, if necessary
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+            
         });
     }
 });
@@ -219,7 +250,11 @@ function resetModalForm() {
     createInputPainElement.remove();
     createLabelSecondElement.remove();
     createInputSecondElement.remove();
+    createInputPainElement.removeAttribute('id');
+    createInputSecondElement.removeAttribute('id');
     if (createNewButtonModal) {
+        createNewButtonModal.removeAttribute('type');
+        createNewButtonModal.removeAttribute("id");
         createNewButtonModal.remove();
     }
 }
