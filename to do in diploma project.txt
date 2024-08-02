@@ -1,12 +1,3 @@
-- Add "Create Row" option which ads new row, with login permission before adding any new rows (done)
-- Add pagination when reached certain number of rows (done)
-- Be able to search values in the input html element (done)
-- Be able to use the "delete" option for certain selected row, with login permission (done)
-- Be able to use the "edit" option for certain selected row, with login permission (done)
-- Add database that stores data from created new rows from the "Create Row" option (done)
-
-------------------------------------------------------------------------------------------------------------------
-
 To Do:
 !! През maps примерно да се предложи на user маршрутизация до планината. И да може с други users да се чати
 за да се организират тези маршрути.
